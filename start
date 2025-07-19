@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Услуги во Вроцлаве</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+    background: #f9f9f9;
+    color: #333;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  .lang-select {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  button.lang-btn {
+    margin: 0 5px;
+    padding: 8px 15px;
+    border: none;
+    background: #1976d2;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  button.lang-btn.active {
+    background: #0d47a1;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background: #1976d2;
+    color: white;
+  }
+  .socials {
+    text-align: center;
+  }
+  .socials img {
+    width: 50px;
+    margin: 0 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .socials img:hover {
+    transform: scale(1.1);
+  }
+  @media (max-width: 600px) {
+    th, td {
+      font-size: 14px;
+    }
+    .socials img {
+      width: 40px;
+      margin: 0 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1 id="title">Услуги для иностранцев во Вроцлаве</h1>
+
+<div class="lang-select">
+  <button class="lang-btn active" data-lang="ru">Рус</button>
+  <button class="lang-btn" data-lang="en">Eng</button>
+  <button class="lang-btn" data-lang="pl">Pl</button>
+  <button class="lang-btn" data-lang="uk">Укр</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th id="header-service">Услуга</th>
+      <th id="header-desc">Описание</th>
+      <th id="header-price">Цена (PLN)</th>
+    </tr>
+  </thead>
+  <tbody id="services-table-body">
+    <!-- Сюда подставляем строки -->
+  </tbody>
+</table>
+
+<div class="socials">
+  <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/120px-Instagram_logo_2016.svg.png" alt="Instagram" />
+  </a>
+  <a href="https://t.me/yourprofile" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/120px-Telegram_logo.svg.png" alt="Telegram" />
+  </a>
+  <a href="viber://chat?number=%2B48123456789">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Viber_logo.svg/120px-Viber_logo.svg.png" alt="Viber" />
+  </a>
+</div>
+
+<script>
+  const data = {
+    ru: {
+      title: "Услуги для иностранцев во Вроцлаве",
+      headers: ["Услуга", "Описание", "Цена (PLN)"],
+      services: [
+        ["Регистрация авто из ЕС", "Полный комплект: заявления, визит в Ужонд", "400–600"],
+        ["Регистрация авто из-за пределов ЕС", "С переводами и акцизом", "600–900"],
+        ["Временная регистрация (tablice tymczasowe)", "Вкл. выдачу временных номеров", "300–400"],
+        ["Смена владельца (внутри Польши)", "При купле-продаже между поляками или иностранцами", "300–400"],
+        ["Замена водительских прав", "Вкл. медсправку и запись в Ужонд", "250–400"],
+        ["Перевод и заверение документов", "Перевод техпаспорта, водительского, договора", "80–150"],
+        ["Оформление PESEL / прописки / ZUS", "Помощь с заявлением и записью", "150–250"],
+        ["Помощь в покупке авто / проверка по VIN", "Проверка истории, сопровождение", "100–200"],
+        ["Страхование ОС (OC) через партнёра", "Комиссия от продажи страховки", "0–100"],
+        ["Консультация по адаптации / ePUAP / mObywatel", "Удалённо или офлайн", "100"]
+      ]
+    },
+    en: {
+      title: "Services for foreigners in Wrocław",
+      headers: ["Service", "Description", "Price (PLN)"],
+      services: [
+        ["Car registration from EU", "Full package: applications, visit to Urząd", "400–600"],
+        ["Car registration from outside EU", "With translations and excise tax", "600–900"],
+        ["Temporary registration (tablice tymczasowe)", "Includes issuing temporary plates", "300–400"],
+        ["Change of owner (within Poland)", "For sale between Poles or foreigners", "300–400"],
+        ["Driver’s license replacement", "Includes medical certificate and Urząd entry", "250–400"],
+        ["Translation and certification of documents", "Translation of registration, license, contracts", "80–150"],
+        ["PESEL / registration / ZUS processing", "Help with applications and registration", "150–250"],
+        ["Help buying a car / VIN check", "History check, accompaniment", "100–200"],
+        ["Liability insurance (OC) via partner", "Commission from insurance sale", "0–100"],
+        ["Adaptation consultation / ePUAP / mObywatel", "Remote or offline", "100"]
+      ]
+    },
+    pl: {
+      title: "Usługi dla cudzoziemców we Wrocławiu",
+      headers: ["Usługa", "Opis", "Cena (PLN)"],
+      services: [
+        ["Rejestracja auta z UE", "Pełny pakiet: wnioski, wizyta w Urzędzie", "400–600"],
+        ["Rejestracja auta spoza UE", "Z tłumaczeniami i akcyzą", "600–900"],
+        ["Tymczasowa rejestracja (tablice tymczasowe)", "W tym wydanie tymczasowych tablic", "300–400"],
+        ["Zmiana właściciela (w Polsce)", "Przy kupnie-sprzedaży między Polakami lub cudzoziemcami", "300–400"],
+        ["Wymiana prawa jazdy", "W tym zaświadczenie lekarskie i wpis do Urzędu", "250–400"],
+        ["Tłumaczenie i poświadczanie dokumentów", "Tłumaczenie dowodu rejestracyjnego, prawa jazdy, umowy", "80–150"],
+        ["Załatwianie PESEL / meldunku / ZUS", "Pomoc w złożeniu wniosku i rejestracji", "150–250"],
+        ["Pomoc przy zakupie auta / sprawdzenie VIN", "Sprawdzenie historii, wsparcie", "100–200"],
+        ["Ubezpieczenie OC przez partnera", "Prowizja ze sprzedaży ubezpieczenia", "0–100"],
+        ["Konsultacja adaptacyjna / ePUAP / mObywatel", "Zdalnie lub na miejscu", "100"]
+      ]
+    },
+    uk: {
+      title: "Послуги для іноземців у Вроцлаві",
+      headers: ["Послуга", "Опис", "Ціна (PLN)"],
+      services: [
+        ["Реєстрація авто з ЄС", "Повний пакет: заяви, візит в Ужонд", "400–600"],
+        ["Реєстрація авто з-за меж ЄС", "З перекладами та акцизом", "600–900"],
+        ["Тимчасова реєстрація (tablice tymczasowe)", "Включно видачу тимчасових номерів", "300–400"],
+        ["Зміна власника (в межах Польщі)", "При купівлі-продажі між поляками або іноземцями", "300–400"],
+        ["Обмін водійських прав", "Включно медсправку та запис в Ужонд", "250–400"],
+        ["Переклад і засвідчення документів", "Переклад техпаспорта, водійського, договору", "80–150"],
+        ["Оформлення PESEL / прописки / ZUS", "Допомога із заявою та записом", "150–250"],
+        ["Допомога у купівлі авто / перевірка по VIN", "Перевірка історії, супровід", "100–200"],
+        ["Страхування ОС (OC) через партнера", "Комісія від продажу страховки", "0–100"],
+        ["Консультація з адаптації / ePUAP / mObywatel", "Дистанційно або офлайн", "100"]
+      ]
+    }
+  };
+
+  const langButtons = document.querySelectorAll('.lang-btn');
+  const servicesTableBody = document.getElementById('services-table-body');
+  const titleEl = document.getElementById('title');
+  const headerService = document.getElementById('header-service');
+  const headerDesc = document.getElementById('header-desc');
+  const headerPrice = document.getElementById('header-price');
+
+  function render(lang) {
+    const content = data[lang];
+    titleEl.textContent = content.title;
+    headerService.textContent = content.headers[0];
+    headerDesc.textContent = content.headers[1];
+    headerPrice.textContent = content.headers[2];
+
+    servicesTableBody.innerHTML = '';
+    content.services.forEach(service => {
+      const tr = document.createElement('tr');
+      service.forEach(text => {
+        const td = document.createElement('td');
+        td.textContent = text;
+        tr.appendChild(td);
+      });
+      servicesTableBody.appendChild(tr);
+    });
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      langButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(btn.dataset.lang);
+    });
+  });
+
+  // Инициализация сайта с русским по умолчанию
+  render('ru');
+</script>
+
+</body>
+</html>.
