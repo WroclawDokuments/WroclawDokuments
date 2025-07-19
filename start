@@ -3,76 +3,200 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Услуги во Вроцлаве</title>
+<title>Услуги для иностранцев во Вроцлаве</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 15px;
-    background: #f9f9f9;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f4f7f9;
+    color: #222;
   }
-  h1, h2 {
+  header {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+    color: white;
     text-align: center;
+    padding: 80px 20px;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.35);
   }
+  header h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+  }
+
   .lang-select {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
   button.lang-btn {
-    margin: 0 5px;
-    padding: 8px 15px;
+    background: #0077cc;
     border: none;
-    background: #1976d2;
     color: white;
+    margin: 0 6px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 4px;
-    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  button.lang-btn:hover {
+    background: #005fa3;
   }
   button.lang-btn.active {
-    background: #0d47a1;
+    background: #003d66;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
+
+  main {
+    max-width: 960px;
+    margin: 0 auto 50px;
+    padding: 0 15px;
   }
-  th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 20px;
   }
-  th {
-    background: #1976d2;
-    color: white;
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    padding: 20px;
+    transition: transform 0.3s ease;
   }
-  .socials {
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  }
+  .card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #0077cc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card p {
+    margin: 8px 0 15px;
+    line-height: 1.4;
+  }
+  .price {
+    font-weight: 700;
+    color: #555;
+  }
+
+  /* Иконки */
+  .icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  /* Отзывы */
+  .reviews {
+    margin-top: 40px;
+  }
+  .reviews h2 {
+    text-align: center;
+    color: #0077cc;
+    margin-bottom: 25px;
+    font-size: 2rem;
+  }
+  .review-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+  .review-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    max-width: 280px;
+    padding: 15px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .review-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 3px solid #0077cc;
+  }
+  .review-name {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #003d66;
+  }
+  .review-text {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  /* О нас */
+  .about {
+    background: #e7f0ff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    margin: 50px 0;
+    text-align: center;
+  }
+  .about h2 {
+    color: #0077cc;
+    margin-bottom: 15px;
+  }
+  .about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #222;
+  }
+  .about img {
+    margin-top: 20px;
+    width: 150px;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  }
+
+  footer {
+    background: #222;
+    color: #ddd;
+    padding: 25px 15px;
     text-align: center;
   }
   .socials img {
-    width: 50px;
+    width: 48px;
     margin: 0 15px;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: filter 0.3s ease;
   }
   .socials img:hover {
-    transform: scale(1.1);
+    filter: brightness(0.7) invert(0.7);
   }
-  @media (max-width: 600px) {
-    th, td {
-      font-size: 14px;
-    }
-    .socials img {
-      width: 40px;
-      margin: 0 10px;
+
+  @media(max-width: 600px) {
+    .review-list {
+      flex-direction: column;
+      align-items: center;
     }
   }
 </style>
 </head>
 <body>
 
-<h1 id="title">Услуги для иностранцев во Вроцлаве</h1>
+<header>
+  <h1 id="title">Услуги для иностранцев во Вроцлаве</h1>
+</header>
 
 <div class="lang-select">
   <button class="lang-btn active" data-lang="ru">Рус</button>
@@ -81,136 +205,89 @@
   <button class="lang-btn" data-lang="uk">Укр</button>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th id="header-service">Услуга</th>
-      <th id="header-desc">Описание</th>
-      <th id="header-price">Цена (PLN)</th>
-    </tr>
-  </thead>
-  <tbody id="services-table-body">
-    <!-- Сюда подставляем строки -->
-  </tbody>
-</table>
+<main>
+  <div class="services-grid" id="services-grid">
+    <!-- Карточки услуг -->
+  </div>
 
-<div class="socials">
-  <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/120px-Instagram_logo_2016.svg.png" alt="Instagram" />
-  </a>
-  <a href="https://t.me/yourprofile" target="_blank" rel="noopener noreferrer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/120px-Telegram_logo.svg.png" alt="Telegram" />
-  </a>
-  <a href="viber://chat?number=%2B48123456789">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Viber_logo.svg/120px-Viber_logo.svg.png" alt="Viber" />
-  </a>
-</div>
+  <section class="about" id="about-section">
+    <h2>О нас</h2>
+    <p>
+      Мы – команда профессионалов с многолетним опытом в оформлении документов и помощи иностранцам во Вроцлаве.  
+      Наша задача – сделать процесс регистрации авто и адаптации максимально простым и удобным для вас.
+    </p>
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80" alt="Наша команда" />
+  </section>
+
+  <section class="reviews" id="reviews-section">
+    <h2>Отзывы клиентов</h2>
+    <div class="review-list" id="review-list">
+      <!-- Отзывы вставятся сюда -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="socials">
+    <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/120px-Instagram_logo_2016.svg.png" alt="Instagram" />
+    </a>
+    <a href="https://t.me/yourprofile" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/120px-Telegram_logo.svg.png" alt="Telegram" />
+    </a>
+    <a href="viber://chat?number=%2B48123456789">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Viber_logo.svg/120px-Viber_logo.svg.png" alt="Viber" />
+    </a>
+  </div>
+</footer>
 
 <script>
   const data = {
     ru: {
       title: "Услуги для иностранцев во Вроцлаве",
-      headers: ["Услуга", "Описание", "Цена (PLN)"],
       services: [
-        ["Регистрация авто из ЕС", "Полный комплект: заявления, визит в Ужонд", "400–600"],
-        ["Регистрация авто из-за пределов ЕС", "С переводами и акцизом", "600–900"],
-        ["Временная регистрация (tablice tymczasowe)", "Вкл. выдачу временных номеров", "300–400"],
-        ["Смена владельца (внутри Польши)", "При купле-продаже между поляками или иностранцами", "300–400"],
-        ["Замена водительских прав", "Вкл. медсправку и запись в Ужонд", "250–400"],
-        ["Перевод и заверение документов", "Перевод техпаспорта, водительского, договора", "80–150"],
-        ["Оформление PESEL / прописки / ZUS", "Помощь с заявлением и записью", "150–250"],
-        ["Помощь в покупке авто / проверка по VIN", "Проверка истории, сопровождение", "100–200"],
-        ["Страхование ОС (OC) через партнёра", "Комиссия от продажи страховки", "0–100"],
-        ["Консультация по адаптации / ePUAP / mObywatel", "Удалённо или офлайн", "100"]
+        ["Регистрация авто из ЕС", "Полный комплект: заявления, визит в Ужонд", "400–600", "🚗"],
+        ["Регистрация авто из-за пределов ЕС", "С переводами и акцизом", "600–900", "🌍"],
+        ["Временная регистрация (tablice tymczasowe)", "Вкл. выдачу временных номеров", "300–400", "🛂"],
+        ["Смена владельца (внутри Польши)", "При купле-продаже между поляками или иностранцами", "300–400", "🔄"],
+        ["Замена водительских прав", "Вкл. медсправку и запись в Ужонд", "250–400", "🪪"],
+        ["Перевод и заверение документов", "Перевод техпаспорта, водительского, договора", "80–150", "📄"],
+        ["Оформление PESEL / прописки / ZUS", "Помощь с заявлением и записью", "150–250", "🏠"],
+        ["Помощь в покупке авто / проверка по VIN", "Проверка истории, сопровождение", "100–200", "🔍"],
+        ["Страхование ОС (OC) через партнёра", "Комиссия от продажи страховки", "0–100", "🛡️"],
+        ["Консультация по адаптации / ePUAP / mObywatel", "Удалённо или офлайн", "100", "💬"]
+      ],
+      aboutText: `Мы – команда профессионалов с многолетним опытом в оформлении документов и помощи иностранцам во Вроцлаве.  
+      Наша задача – сделать процесс регистрации авто и адаптации максимально простым и удобным для вас.`,
+      reviews: [
+        {name: "Анна Петрова", photo: "https://randomuser.me/api/portraits/women/68.jpg", text: "Очень благодарна за помощь с регистрацией машины. Всё быстро и понятно!"},
+        {name: "Иван Смирнов", photo: "https://randomuser.me/api/portraits/men/45.jpg", text: "Отличный сервис, помогли с переводом и оформлением документов."},
+        {name: "Мария Коваль", photo: "https://randomuser.me/api/portraits/women/44.jpg", text: "Рекомендую всем, кто впервые во Вроцлаве! Очень отзывчивые и профессиональные."}
       ]
     },
     en: {
       title: "Services for foreigners in Wrocław",
-      headers: ["Service", "Description", "Price (PLN)"],
       services: [
-        ["Car registration from EU", "Full package: applications, visit to Urząd", "400–600"],
-        ["Car registration from outside EU", "With translations and excise tax", "600–900"],
-        ["Temporary registration (tablice tymczasowe)", "Includes issuing temporary plates", "300–400"],
-        ["Change of owner (within Poland)", "For sale between Poles or foreigners", "300–400"],
-        ["Driver’s license replacement", "Includes medical certificate and Urząd entry", "250–400"],
-        ["Translation and certification of documents", "Translation of registration, license, contracts", "80–150"],
-        ["PESEL / registration / ZUS processing", "Help with applications and registration", "150–250"],
-        ["Help buying a car / VIN check", "History check, accompaniment", "100–200"],
-        ["Liability insurance (OC) via partner", "Commission from insurance sale", "0–100"],
-        ["Adaptation consultation / ePUAP / mObywatel", "Remote or offline", "100"]
+        ["Car registration from EU", "Full package: applications, visit to Urząd", "400–600", "🚗"],
+        ["Car registration from outside EU", "With translations and excise tax", "600–900", "🌍"],
+        ["Temporary registration (tablice tymczasowe)", "Includes issuing temporary plates", "300–400", "🛂"],
+        ["Change of owner (within Poland)", "For sale between Poles or foreigners", "300–400", "🔄"],
+        ["Driver’s license replacement", "Includes medical certificate and Urząd entry", "250–400", "🪪"],
+        ["Translation and certification of documents", "Translation of registration, license, contracts", "80–150", "📄"],
+        ["PESEL / registration / ZUS processing", "Help with applications and registration", "150–250", "🏠"],
+        ["Help buying a car / VIN check", "History check, accompaniment", "100–200", "🔍"],
+        ["Liability insurance (OC) via partner", "Commission from insurance sale", "0–100", "🛡️"],
+        ["Adaptation consultation / ePUAP / mObywatel", "Remote or offline", "100", "💬"]
+      ],
+      aboutText: `We are a team of professionals with many years of experience in document processing and helping foreigners in Wrocław.  
+      Our goal is to make the process of car registration and adaptation as simple and convenient as possible for you.`,
+      reviews: [
+        {name: "Anna Petrova", photo: "https://randomuser.me/api/portraits/women/68.jpg", text: "Very grateful for the help with car registration. Everything was fast and clear!"},
+        {name: "Ivan Smirnov", photo: "https://randomuser.me/api/portraits/men/45.jpg", text: "Great service, helped with translation and document processing."},
+        {name: "Maria Kowal", photo: "https://randomuser.me/api/portraits/women/44.jpg", text: "Recommended for everyone new to Wrocław! Very responsive and professional."}
       ]
     },
     pl: {
       title: "Usługi dla cudzoziemców we Wrocławiu",
-      headers: ["Usługa", "Opis", "Cena (PLN)"],
       services: [
-        ["Rejestracja auta z UE", "Pełny pakiet: wnioski, wizyta w Urzędzie", "400–600"],
-        ["Rejestracja auta spoza UE", "Z tłumaczeniami i akcyzą", "600–900"],
-        ["Tymczasowa rejestracja (tablice tymczasowe)", "W tym wydanie tymczasowych tablic", "300–400"],
-        ["Zmiana właściciela (w Polsce)", "Przy kupnie-sprzedaży między Polakami lub cudzoziemcami", "300–400"],
-        ["Wymiana prawa jazdy", "W tym zaświadczenie lekarskie i wpis do Urzędu", "250–400"],
-        ["Tłumaczenie i poświadczanie dokumentów", "Tłumaczenie dowodu rejestracyjnego, prawa jazdy, umowy", "80–150"],
-        ["Załatwianie PESEL / meldunku / ZUS", "Pomoc w złożeniu wniosku i rejestracji", "150–250"],
-        ["Pomoc przy zakupie auta / sprawdzenie VIN", "Sprawdzenie historii, wsparcie", "100–200"],
-        ["Ubezpieczenie OC przez partnera", "Prowizja ze sprzedaży ubezpieczenia", "0–100"],
-        ["Konsultacja adaptacyjna / ePUAP / mObywatel", "Zdalnie lub na miejscu", "100"]
-      ]
-    },
-    uk: {
-      title: "Послуги для іноземців у Вроцлаві",
-      headers: ["Послуга", "Опис", "Ціна (PLN)"],
-      services: [
-        ["Реєстрація авто з ЄС", "Повний пакет: заяви, візит в Ужонд", "400–600"],
-        ["Реєстрація авто з-за меж ЄС", "З перекладами та акцизом", "600–900"],
-        ["Тимчасова реєстрація (tablice tymczasowe)", "Включно видачу тимчасових номерів", "300–400"],
-        ["Зміна власника (в межах Польщі)", "При купівлі-продажі між поляками або іноземцями", "300–400"],
-        ["Обмін водійських прав", "Включно медсправку та запис в Ужонд", "250–400"],
-        ["Переклад і засвідчення документів", "Переклад техпаспорта, водійського, договору", "80–150"],
-        ["Оформлення PESEL / прописки / ZUS", "Допомога із заявою та записом", "150–250"],
-        ["Допомога у купівлі авто / перевірка по VIN", "Перевірка історії, супровід", "100–200"],
-        ["Страхування ОС (OC) через партнера", "Комісія від продажу страховки", "0–100"],
-        ["Консультація з адаптації / ePUAP / mObywatel", "Дистанційно або офлайн", "100"]
-      ]
-    }
-  };
-
-  const langButtons = document.querySelectorAll('.lang-btn');
-  const servicesTableBody = document.getElementById('services-table-body');
-  const titleEl = document.getElementById('title');
-  const headerService = document.getElementById('header-service');
-  const headerDesc = document.getElementById('header-desc');
-  const headerPrice = document.getElementById('header-price');
-
-  function render(lang) {
-    const content = data[lang];
-    titleEl.textContent = content.title;
-    headerService.textContent = content.headers[0];
-    headerDesc.textContent = content.headers[1];
-    headerPrice.textContent = content.headers[2];
-
-    servicesTableBody.innerHTML = '';
-    content.services.forEach(service => {
-      const tr = document.createElement('tr');
-      service.forEach(text => {
-        const td = document.createElement('td');
-        td.textContent = text;
-        tr.appendChild(td);
-      });
-      servicesTableBody.appendChild(tr);
-    });
-  }
-
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      langButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      render(btn.dataset.lang);
-    });
-  });
-
-  // Инициализация сайта с русским по умолчанию
-  render('ru');
-</script>
-
-</body>
-</html>.
+        ["Rejestracja auta z UE", "Pełny pakiet: wnioski, wizyta w Urzędzie", "400–600",
