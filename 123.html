@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Услуги во Вроцлаве</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* (стили остаются прежними) */
+</style>
+</head>
+<body>
+<header>
+  <div class="lang-switcher">
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('pl')">PL</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('ua')">UA</button>
+  </div>
+  <h1 id="page-title">Услуги для иностранцев во Вроцлаве</h1>
+</header>
+
+<nav>
+  <a href="#service1">Авто из ЕС</a>
+  <a href="#service2">Авто вне ЕС</a>
+  <a href="#service3">Права</a>
+  <a href="#service4">PESEL</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#contact">Заявка</a>
+</nav>
+
+<section class="services">
+  <!-- (карточки остаются прежними) -->
+</section>
+
+<section class="reviews" id="reviews">
+  <h2>Отзывы клиентов</h2>
+  <div id="review-list">
+    <img src="https://i.imgur.com/x8l8R7T.png" alt="review1" style="width:100%; max-width:400px; margin-bottom: 15px;">
+    <img src="https://i.imgur.com/V0NtnVX.png" alt="review2" style="width:100%; max-width:400px; margin-bottom: 15px;">
+    <img src="https://i.imgur.com/MT8DA3W.png" alt="review3" style="width:100%; max-width:400px; margin-bottom: 15px;">
+  </div>
+  <button class="btn" onclick="toggleReviewForm()">Оставить отзыв</button>
+  <form id="reviewForm" style="display:none; margin-top: 20px;">
+    <input type="text" id="reviewer" placeholder="Ваше имя" required>
+    <textarea id="reviewText" placeholder="Ваш отзыв..." rows="4" required></textarea>
+    <button type="submit">Отправить отзыв</button>
+  </form>
+</section>
+
+<section class="contact-form" id="contact">
+  <h2>Оставьте заявку</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Ваше имя" required>
+    <input type="tel" id="phone" placeholder="Телефон или Telegram" required>
+    <textarea id="message" placeholder="Комментарий или вопрос..." rows="5"></textarea>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
+
+<footer>
+  <p>Следите за нами:</p>
+  <div class="socials">
+    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"></a>
+    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Viber_logo.svg" alt="Viber"></a>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  ru: {
+    title: "Услуги для иностранцев во Вроцлаве",
+    service1: "Регистрация авто из ЕС",
+    service2: "Регистрация авто из-за пределов ЕС",
+    service3: "Замена водительских прав",
+    service4: "Оформление PESEL / прописки / ZUS"
+  },
+  pl: {
+    title: "Usługi dla obcokrajowców we Wrocławiu",
+    service1: "Rejestracja auta z UE",
+    service2: "Rejestracja auta spoza UE",
+    service3: "Wymiana prawa jazdy",
+    service4: "PESEL / zameldowanie / ZUS"
+  },
+  en: {
+    title: "Services for foreigners in Wroclaw",
+    service1: "Car registration from EU",
+    service2: "Car registration outside EU",
+    service3: "Driver's license exchange",
+    service4: "PESEL / address registration / ZUS"
+  },
+  ua: {
+    title: "Послуги для іноземців у Вроцлаві",
+    service1: "Реєстрація авто з ЄС",
+    service2: "Реєстрація авто ззовні ЄС",
+    service3: "Обмін водійського посвідчення",
+    service4: "PESEL / реєстрація адреси / ZUS"
+  }
+};
+function setLang(lang) {
+  document.getElementById("page-title").innerText = translations[lang].title;
+  document.getElementById("service1-title").innerText = translations[lang].service1;
+  document.getElementById("service2-title").innerText = translations[lang].service2;
+  document.getElementById("service3-title").innerText = translations[lang].service3;
+  document.getElementById("service4-title").innerText = translations[lang].service4;
+}
+
+function toggleReviewForm() {
+  const form = document.getElementById("reviewForm");
+  form.style.display = form.style.display === "none" ? "block" : "none";
+}
+
+document.getElementById("reviewForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("reviewer").value;
+  const text = document.getElementById("reviewText").value;
+  const newReview = document.createElement("div");
+  newReview.className = "review";
+  newReview.innerHTML = `<p>"${text}"</p><strong>— ${name}</strong>`;
+  document.getElementById("review-list").appendChild(newReview);
+  localStorage.setItem("customReviews", document.getElementById("review-list").innerHTML);
+  document.getElementById("reviewForm").reset();
+  document.getElementById("reviewForm").style.display = "none";
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("customReviews");
+  if (saved) document.getElementById("review-list").innerHTML += saved;
+});
+</script>
+</body>
+</html>
